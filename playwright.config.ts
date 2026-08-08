@@ -8,7 +8,9 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
+    screenshot: 'only-on-failure',
     trace: 'on-first-retry',
+    video: 'retain-on-failure',
   },
 
   projects: [
