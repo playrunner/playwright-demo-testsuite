@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
+if (!process.env.PLAYRUNNER_TEST?.trim()) {
+  throw new Error('PLAYRUNNER_TEST must be set to a non-empty value.');
+}
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
