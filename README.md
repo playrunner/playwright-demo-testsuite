@@ -13,12 +13,20 @@ Configure a Playwright node with:
 - Branch: `demo/sharding-report-merge`
 - Folder: `/`
 - Runtime: TypeScript
-- Sharding: Auto with a maximum of 4, or Manual with 4 shards
+- CPU: 1 per shard
+- Memory: 1 GB per shard
+- Workers: 1 per shard
+- Sharding: Manual with 4 shards
 
 The authored Playwright node should expand into test discovery, four shard
 children, and a final report-merge child. The parent is expected to finish in a
 failed state because `tests/failing.spec.ts` is deliberately red, while still
-providing the merged HTML report.
+providing the merged HTML report. Shard 1 is expected to fail and shards 2–4
+are expected to pass.
+
+Local sharding is capacity-aware. The default 4 GB memory setting permits only
+one shard on an 8 GB Docker runtime, so the 1 GB setting above is required for
+this four-shard demo.
 
 ## Reproduce the shard workflow manually
 

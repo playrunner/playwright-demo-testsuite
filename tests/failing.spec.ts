@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('deliberately failing test - wrong title assertion', async ({ page }) => {
+test('FAIL - deliberate wrong title assertion', async ({ page }) => {
   await page.setContent(`
     <!doctype html>
     <html>
@@ -9,6 +9,7 @@ test('deliberately failing test - wrong title assertion', async ({ page }) => {
     </html>
   `);
 
-  // This assertion will fail because the actual title is "Example Domain"
-  await expect(page).toHaveTitle(/This Title Does Not Exist/);
+  // Keep the failure immediate and deterministic while still exercising the
+  // screenshot/video-on-failure configuration.
+  expect(await page.title()).toBe('This Title Does Not Exist');
 });

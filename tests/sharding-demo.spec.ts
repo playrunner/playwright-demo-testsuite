@@ -20,7 +20,7 @@ const scenarios = [
 ] as const;
 
 for (const [index, scenario] of scenarios.entries()) {
-  test(`sharding demo ${String(index + 1).padStart(2, '0')} - ${scenario}`, async ({
+  test(`PASS - sharding demo ${String(index + 1).padStart(2, '0')} - ${scenario}`, async ({
     page,
   }, testInfo) => {
     const sequence = index + 1;

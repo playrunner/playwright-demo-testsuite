@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('basic test - render a page and check its title', async ({ page }) => {
+test('PASS - render a page and check its title', async ({ page }) => {
   await page.setContent(`
     <!doctype html>
     <html>
