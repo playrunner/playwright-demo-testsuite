@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const scenarios = [
+const namedScenarios = [
   'authentication',
   'project list',
   'workflow editor',
@@ -19,12 +19,22 @@ const scenarios = [
   'workflow completion',
 ] as const;
 
+// Together with example.spec.ts and failing.spec.ts, this produces 128 tests.
+// Auto sharding targets four test units per worker, so 128 tests require four
+// useful shards even when the Playrunner node is configured with 10 workers.
+const scenarios = Array.from(
+  { length: 126 },
+  (_, index) =>
+    namedScenarios[index] ||
+    `generated workload ${String(index + 1).padStart(3, '0')}`,
+);
+
 for (const [index, scenario] of scenarios.entries()) {
   test(`PASS - sharding demo ${String(index + 1).padStart(2, '0')} - ${scenario}`, async ({
     page,
   }, testInfo) => {
     const sequence = index + 1;
-    const delayMs = 250 + (index % 4) * 100;
+    const delayMs = 25 + (index % 4) * 10;
 
     await page.setContent(`
       <!doctype html>

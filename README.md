@@ -1,9 +1,10 @@
 # Playwright demo test suite
 
 This branch contains a deterministic suite for exercising Playrunner's
-Playwright sharding and merged-report workflow. It has enough fully-parallel
-tests to populate four shards and includes one intentional failure so the final
-merged report demonstrates both successful and failed tests.
+Playwright sharding and merged-report workflow. Its 128 fully-parallel tests
+produce four useful shards even when a Playrunner node uses 10 workers, and it
+includes one intentional failure so the final merged report demonstrates both
+successful and failed tests.
 
 ## Run it in Playrunner
 
