@@ -13,7 +13,6 @@ Configure a Playwright node with:
 - Branch: `demo/sharding-report-merge`
 - Folder: `/`
 - Runtime: TypeScript
-- Environment variable: `PLAYRUNNER_TEST=sharding-demo`
 - Sharding: Auto with a maximum of 4, or Manual with 4 shards
 
 The authored Playwright node should expand into test discovery, four shard
