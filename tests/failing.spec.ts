@@ -5,7 +5,7 @@ test('FAIL - deliberate wrong title assertion', async ({ page }) => {
     <!doctype html>
     <html>
       <head><title>Example Domain</title></head>
-      <body><h1>Intentional report merge failure</h1></body>
+      <body><h1>Intentional test failure</h1></body>
     </html>
   `);
 
